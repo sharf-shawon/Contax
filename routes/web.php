@@ -30,6 +30,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [UserProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [UserProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [UserProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('card/register', [\App\Http\Controllers\CardController::class, 'registerForm'])->name('card.register');
+    Route::post('register', [\App\Http\Controllers\CardController::class, 'CardController@register'])->name('card.register.save');
+    Route::resource('card', \App\Http\Controllers\CardController::class);
+    Route::resource('user', \App\Http\Controllers\UserController::class);
 });
 
 require __DIR__.'/auth.php';

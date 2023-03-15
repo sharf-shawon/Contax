@@ -7,6 +7,7 @@ module.exports = {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
     ],
+    // darkMode: 'class',
 
     theme: {
         extend: {
@@ -16,5 +17,7 @@ module.exports = {
         },
     },
 
-    plugins: [require('@tailwindcss/forms')],
+    plugins: [require('@tailwindcss/forms')({
+        strategy: 'class',
+      }),],
 };

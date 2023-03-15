@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Card extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'cid',
+        'user_id',
+        'vendor_id',
+    ];
     /**
      * Get the user that owns the Card
      *

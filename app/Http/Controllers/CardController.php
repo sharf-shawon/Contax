@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Card;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CardController extends Controller
@@ -12,7 +13,37 @@ class CardController extends Controller
      */
     public function index()
     {
-        //
+        return view('card.index', [
+            'cards' => Card::all(),
+        ]);
+    }
+
+    /**
+     * Show the form for registering a card to a user.
+     */
+    public function registerForm()
+    {
+        return view('card.register', [
+            'users' => User::all(),
+        ]);
+    }
+
+    /*
+     * Register a card to a user
+     */
+    public function register(Request $request)
+    {
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'cid' => 'required|unique:cards,cid',
+        ]);
+
+        $card = new Card;
+        $card->cid = $request->cid;
+        $card->user_id = $request->user_id;
+        $card->save();
+
+        return redirect()->route('card.index');
     }
 
     /**
