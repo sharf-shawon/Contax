@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -25,10 +24,10 @@ class UserProfileController extends Controller
     /**
      * Update the user's profile information.
      */
-    public function update(ProfileUpdateRequest $request)
+    public function update(Request $request)
     {
         $user = User::find($request->user()->id);
-        $validated_data = $request->validate([
+        $request->validate([
             'email' => 'required|string|email|max:255|unique:users,email,' . Auth::user()->id,
             'phone' => 'required|numeric|starts_with:012,013,014,015,016,017,018,019|max_digits:11|unique:users,phone,' . Auth::user()->id,
             'name'          => 'required|string|max:50',

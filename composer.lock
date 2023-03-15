@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "40a69993432aaf32f204d94002e12c27",
+    "content-hash": "f9e2ff2ab6da536a70ba284bd1f315fd",
     "packages": [
         {
             "name": "brick/math",
@@ -2942,6 +2942,55 @@
                 }
             ],
             "time": "2023-01-12T18:13:24+00:00"
+        },
+        {
+            "name": "rogersxd/vcard",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rogersxd/vcard.git",
+                "reference": "b8655566857ef7868ef66cf32a700ba9fc1d7396"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rogersxd/vcard/zipball/b8655566857ef7868ef66cf32a700ba9fc1d7396",
+                "reference": "b8655566857ef7868ef66cf32a700ba9fc1d7396",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "5.2.*"
+            },
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "Rogersxd\\VCard\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rogers Corrêa",
+                    "email": "rogersgbc@gmail.com"
+                }
+            ],
+            "description": "Generate vCards fast.",
+            "keywords": [
+                "laravel",
+                "php",
+                "vCard",
+                "vcf"
+            ],
+            "support": {
+                "issues": "https://github.com/rogersxd/vcard/issues",
+                "source": "https://github.com/rogersxd/vcard/tree/master"
+            },
+            "time": "2018-07-16T14:51:10+00:00"
         },
         {
             "name": "symfony/console",

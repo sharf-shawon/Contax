@@ -202,11 +202,12 @@
                         <p class="designation">{{$user->company}}</p>
                     </div>
                 </div>
-                <a href="?vcard" class="btn btn-block btn-primary">Download Info</a>
+                <a href="/p/a/download" class="btn btn-block btn-primary">Download Info</a>
             </div>
 
         </div>
     </div>
+    <footer><a href="/profile" class="text-muted">Edit Profile</a></footer>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript"></script>
