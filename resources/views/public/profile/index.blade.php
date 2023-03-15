@@ -202,7 +202,7 @@
                         <p class="designation">{{$user->company}}</p>
                     </div>
                 </div>
-                <a href="/p/a/download" class="btn btn-block btn-primary">Download Info</a>
+                <a href="/p/{{$card->cid}}/download" class="btn btn-block btn-primary">Download Info</a>
             </div>
 
         </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Card;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -14,10 +15,19 @@ class PublicProfileController extends Controller
      */
     public function index($cid)
     {
-        //ToDo: Get the user's profile from the database
-        $user = User::where('id', 1)->first();
+        $card = Card::where([
+            'cid' => $cid,
+            'is_active' => true
+        ])->firstOrFail();
+        $user = $card->user;
+        if(!$user)
+        {
+            session()->put('signup_card', $cid);
+            return redirect()->route('register');
+        }
         return view('public.profile.index', [
             'user' => $user,
+            'card' => $card,
         ]);
     }
 
@@ -26,7 +36,11 @@ class PublicProfileController extends Controller
      */
     public function download($cid)
     {
-        $user = User::where('id', 1)->first();
+        $card = Card::where([
+            'cid' => $cid,
+            'is_active' => true
+        ])->firstOrFail();
+        $user = $card->user;
         $vcard = new VCard();
 
         $vcard->addPhoto(asset('img/avatar.png'));
@@ -40,12 +54,7 @@ class PublicProfileController extends Controller
         $vcard->addJobtitle($user->title);
         $vcard->addCompany($user->company);
 
-        $vcard->addEmail($user->email);
-
-
-        $vcard->addUrl($user->website);
-
-        $vcard->addUrl($user->github, 'github');
+        $vcard->addEmail($user->email, 'personal');
 
         $vcard->addNote($user->bio);
 
@@ -70,6 +79,10 @@ class PublicProfileController extends Controller
             $country,
             $type
         );
+
+        $vcard->addUrl($user->website);
+
+        $vcard->addUrl($user->github, 'github');
 
         $socialProfile1 = $user->facebook;
         $typeSocialProfile1 = 'facebook';
