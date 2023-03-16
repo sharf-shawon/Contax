@@ -27,12 +27,18 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    //Admin Routes
+    Route::resource('permission', \App\Http\Controllers\PermissionController::class)->except(['show', 'edit', 'update']);
+    Route::resource('role', \App\Http\Controllers\RoleController::class);
+
+    //Vendor Routes
+    Route::get('card/register', [\App\Http\Controllers\CardController::class, 'registerForm'])->name('card.register');
+    Route::post('card/register', [\App\Http\Controllers\CardController::class, 'register'])->name('card.register.save');
+
+    //User Routes
     Route::get('/profile', [UserProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [UserProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [UserProfileController::class, 'destroy'])->name('profile.destroy');
-
-    Route::get('card/register', [\App\Http\Controllers\CardController::class, 'registerForm'])->name('card.register');
-    Route::post('card/register', [\App\Http\Controllers\CardController::class, 'register'])->name('card.register.save');
     Route::resource('card', \App\Http\Controllers\CardController::class);
     Route::resource('user', \App\Http\Controllers\UserController::class);
 });

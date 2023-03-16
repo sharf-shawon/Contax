@@ -31,6 +31,16 @@
                         {{ __('Register a Card') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('permission.index')" :active="request()->routeIs('permission.index')">
+                        {{ __('Permissions') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('role.index')" :active="request()->routeIs('role.index')">
+                        {{ __('Roles') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
