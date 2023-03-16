@@ -35,13 +35,15 @@ class CardController extends Controller
     {
         $request->validate([
             'user_id' => 'required|exists:users,id',
-            'cid' => 'required|unique:cards,cid',
+            'qr_code' => 'required|url|starts_with:http://contax.test,https://contax.test,http://localhost,https://localhost',
         ]);
-        $cid = substr($request->cid, strrpos($request->cid, '/') + 1);
+        $cid = substr($request->qr_code, strrpos($request->qr_code, '/') + 1);
+        if(Card::where('cid', $cid)->exists()) {
+            return redirect()->back()->withErrors(['qr_code' => 'This Card is already registered']);
+        }
 
-        dd($cid);
         $card = new Card;
-        $card->cid = $request->cid;
+        $card->cid = $cid;
         $card->user_id = $request->user_id;
         $card->save();
 
@@ -93,6 +95,8 @@ class CardController extends Controller
      */
     public function destroy(Card $card)
     {
+        $card->delete();
+        return redirect()->back()->with('success', 'Card deleted successfully');
         //
     }
 }
