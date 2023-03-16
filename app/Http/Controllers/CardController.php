@@ -37,7 +37,9 @@ class CardController extends Controller
             'user_id' => 'required|exists:users,id',
             'cid' => 'required|unique:cards,cid',
         ]);
+        $cid = substr($request->cid, strrpos($request->cid, '/') + 1);
 
+        dd($cid);
         $card = new Card;
         $card->cid = $request->cid;
         $card->user_id = $request->user_id;

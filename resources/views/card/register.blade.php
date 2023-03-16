@@ -4,21 +4,31 @@
             {{ __('Card List') }}
         </h2>
     </x-slot>
-    <div class="py-12">
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-0 sm:pt-0 bg-gray-100 dark:bg-gray-900">
+        <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
             <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <select name="user_id" id="user_id"
-                        class="block px-3 py-2 pl-10 leading-tight text-gray-700 border border-gray-300 rounded w-half float-center bg-white-200 focus:outline-none focus:bg-white focus:border-gray-500">
-                        @foreach ($users as $item)
+                    <form action="{{route('card.register')}}" method="post">
+                        @csrf
+                        <select name="user_id" id="user_id"
+                            class="block px-3 py-3 pr-10 leading-tight text-gray-700 border border-gray-300 rounded w-full float-center bg-white-200 focus:outline-none focus:bg-white focus:border-gray-500">
                             <option></option>
-                            <option value="{{ $item->id }}">{{ $item->id }}. {{ $item->email }} -
-                                {{ $item->name }}</option>
-                        @endforeach
-                    </select>
-                    <input type="text" name="cid" id="cid" class="block px-3 py-2 pl-10 leading-tight text-gray-700 border border-gray-300 rounded w-half float-center bg-white-200 focus:outline-none focus:bg-white focus:border-gray-500">
-                    <br>
-                    <div id="reader" width="600px"></div>
+                            @foreach ($users as $item)
+                                <option value="{{ $item->id }}">{{ $item->id }}. {{ $item->email }} -
+                                    {{ $item->name }}</option>
+                            @endforeach
+                        </select>
+                        <br>
+                        <input type="text" name="cid" id="cid" class="block my-3 px-3 py-2 pl-10 leading-tight text-gray-700 border border-gray-300 rounded w-full float-center bg-white-200 focus:outline-none focus:bg-white focus:border-gray-500">
+                        <br>
+                        <div class="max-w-md">
+                            <div id="reader" class="w-fit" width="600px"></div>
+                        </div>
+                        <br>
+                        <x-primary-button>{{ __('Register') }}</x-primary-button>
+
+                    </form>
+
                 </div>
             </div>
         </div>
