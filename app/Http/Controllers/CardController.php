@@ -28,6 +28,18 @@ class CardController extends Controller
         ]);
     }
 
+    /**
+     * Validate a QR code
+     * @param Request $request
+     */
+
+    public function validateQR(Request $request)
+    {
+        $request->validate([
+            'qr_code' => 'required|url|starts_with:http://contax.test,https://contax.test,http://localhost,https://localhost,http://test.linkard.io,https://test.linkard.io',
+        ]);
+        return response("ok");
+    }
     /*
      * Register a card to a user
      */
@@ -35,7 +47,7 @@ class CardController extends Controller
     {
         $request->validate([
             'user_id' => 'required|exists:users,id',
-            'qr_code' => 'required|url|starts_with:http://contax.test,https://contax.test,http://localhost,https://localhost',
+            'qr_code' => 'required|url|starts_with:http://contax.test,https://contax.test,http://localhost,https://localhost,http://test.linkard.io,https://test.linkard.io',
         ]);
         $cid = substr($request->qr_code, strrpos($request->qr_code, '/') + 1);
         if(Card::where('cid', $cid)->exists()) {

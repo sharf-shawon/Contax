@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('role', \App\Http\Controllers\RoleController::class);
 
     //Vendor Routes
+    Route::post('card/validate_qr', [\App\Http\Controllers\CardController::class, 'validateQR'])->name('card.validate.qr');
     Route::get('card/register', [\App\Http\Controllers\CardController::class, 'registerForm'])->name('card.register');
     Route::post('card/register', [\App\Http\Controllers\CardController::class, 'register'])->name('card.register.save');
 
