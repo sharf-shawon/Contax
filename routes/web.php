@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [UserProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [UserProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [UserProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::resource('order', \App\Http\Controllers\OrderController::class);
     Route::resource('card', \App\Http\Controllers\CardController::class);
     Route::resource('user', \App\Http\Controllers\UserController::class);
 });

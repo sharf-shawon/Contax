@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Card;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -23,8 +24,19 @@ class CardController extends Controller
      */
     public function registerForm()
     {
+        if(isset($_GET['order_id']))
+        {
+
+            $order = Order::find($_GET['order_id']);
+            if($order->status != 'processing')
+            return redirect()->back()->with('error', 'Order must be in processing status');
+        }
+
+        if(isset($_GET['user_id']))
+            $user = User::whereId($_GET['user_id'])->get();
+
         return view('card.register', [
-            'users' => User::all(),
+            'users' => $user ?? User::all(),
         ]);
     }
 

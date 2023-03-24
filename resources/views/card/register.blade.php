@@ -14,7 +14,9 @@
                             <x-input-label for="user_id" :value="__('Select User')" />
                             <select name="user_id" id="user_id" required autofocus
                                 class="block w-full mt-1 border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600">
+                                @if ($users && $users->count() > 1)
                                 <option></option>
+                                @endif
                                 @foreach ($users as $item)
                                     <option value="{{ $item->id }}">{{ $item->id }}. {{ $item->email }} -
                                         {{ $item->name }}</option>
@@ -51,7 +53,7 @@
             if(url)
             {
                 try {
-                    document.getElementById("writeButton").inner = "Waiting for Card";
+                    document.getElementById("writeButton").innerHTML = "Waiting";
                     const ndef = new NDEFReader();
                     await ndef.write({
                         records: [{
@@ -61,7 +63,7 @@
                     });
                     document.getElementById("writeButton").innerHTML = "Done";
                 } catch (error) {
-                    console.log("Argh! " + error);
+                    alert(error);
                 }
             }
         });

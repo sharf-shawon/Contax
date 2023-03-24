@@ -53,4 +53,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(\App\Models\Card::class, 'user_id', 'id');
     }
+
+    /**
+     * Get the orders for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function orders()
+    {
+        return $this->hasMany(\App\Models\Order::class, 'user_id', 'id');
+    }
 }
