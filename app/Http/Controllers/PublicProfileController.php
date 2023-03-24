@@ -31,6 +31,23 @@ class PublicProfileController extends Controller
         ]);
     }
 
+    public function preview()
+    {
+        $card = Card::where([
+            'user_id' => Auth::user()->id,
+        ])->firstOrFail();
+        $user = $card->user;
+        if(!$user)
+        {
+            session()->put('signup_card', $cid);
+            return redirect()->route('register');
+        }
+        return view('public.profile.index', [
+            'user' => $user,
+            'card' => $card,
+        ]);
+    }
+
     /**
      * Download the user's profile as a vcf.
      */

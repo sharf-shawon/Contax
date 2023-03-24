@@ -29,7 +29,7 @@ class UserProfileController extends Controller
         $user = User::find($request->user()->id);
         $request->validate([
             'email' => 'required|string|email|max:255|unique:users,email,' . Auth::user()->id,
-            'phone' => 'required|numeric|starts_with:012,013,014,015,016,017,018,019|max_digits:11|unique:users,phone,' . Auth::user()->id,
+            'phone' => 'required|numeric|max_digits:11|unique:users,phone,' . Auth::user()->id,
             'name'          => 'required|string|max:50',
             'work_phone'    => 'nullable|numeric|max_digits:11',
             'home_phone'    => 'nullable|numeric|max_digits:11',

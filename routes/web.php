@@ -19,6 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/p/preview', [PublicProfileController::class, 'preview'])->name('public.profile.preview');
 Route::get('/p/{cid}', [PublicProfileController::class, 'index'])->name('public.profile.index');
 Route::get('/p/{cid}/download', [PublicProfileController::class, 'download'])->name('public.profile.download');
 

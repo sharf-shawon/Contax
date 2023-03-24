@@ -26,6 +26,13 @@ class UserSeeder extends Seeder
             'phone' => '01612404200',
             'password' => bcrypt('12345678'),
         ]);
+
+        User::create([
+            'name' => 'Bunyod Abdusaidov',
+            'email' => 'bunyodabdusaidov0@gmail.com',
+            'phone' => '4173198737',
+            'password' => bcrypt('88888888'),
+        ]);
         //
     }
 }
