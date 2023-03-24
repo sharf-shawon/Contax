@@ -29,6 +29,8 @@ class UserTable extends PowerGridComponent
         return PowerGrid::eloquent($model)
             ->addColumn('id')
             ->addColumn('name')
+            ->addColumn('email')
+            ->addColumn('phone')
             ->addColumn('cards', function(User $model) {
                 return $model->cards()->count();
             })
@@ -51,6 +53,18 @@ class UserTable extends PowerGridComponent
             Column::add()
                 ->title(__('Name'))
                 ->field('name')
+                ->searchable()
+                ->sortable(),
+
+            Column::add()
+                ->title(__('Email'))
+                ->field('email')
+                ->searchable()
+                ->sortable(),
+
+            Column::add()
+                ->title(__('Phone#'))
+                ->field('phone')
                 ->searchable()
                 ->sortable(),
 

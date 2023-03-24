@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 
-function checkPermission($permission = null)
+function checkPermission($permission = null, $abort = true)
 {
     if(!$permission)
     {
@@ -24,6 +24,11 @@ function checkPermission($permission = null)
     }
 
     if(Auth::user()->cannot($permission))
-        abort(403);
+        if($abort)
+            abort(403);
+        else
+            return false;
+    else
+        return true;
 
 }

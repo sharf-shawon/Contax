@@ -71,7 +71,7 @@ class CardController extends Controller
         $card->user_id = $request->user_id;
         $card->save();
 
-        return redirect()->route('card.index');
+        return redirect()->back()->with('success', 'Card registered successfully');
     }
 
     /**

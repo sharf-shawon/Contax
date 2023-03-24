@@ -29,6 +29,7 @@ class CardTable extends PowerGridComponent
         return PowerGrid::eloquent($model)
             ->addColumn('id')
             ->addColumn('vendor_id')
+            ->addColumn('is_active')
             ->addColumn('created_at')
             ->addColumn('created_at_formatted', function(Card $model) {
                 return Carbon::parse($model->created_at)->format('d/m/Y H:i:s');
@@ -71,6 +72,14 @@ class CardTable extends PowerGridComponent
                 ->sortable(),
 
             Column::add()
+                ->title(__('Status'))
+                ->field('is_active')
+                ->makeBooleanFilter('is_active', 'Active', 'Inactive')
+                ->toggleable(checkPermission('card.edit', false), 'Active', 'Inactive')
+                ->searchable()
+                ->sortable(),
+
+            Column::add()
                 ->title(__('Created at'))
                 ->field('created_at')
                 ->hidden(),
@@ -94,10 +103,10 @@ class CardTable extends PowerGridComponent
     public function actions(): array
     {
        return [
-           Button::add('edit')
-               ->caption(__('Edit'))
-               ->class('inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150')
-               ->route('card.edit', ['card' => 'id']),
+        //    Button::add('edit')
+        //        ->caption(__('Edit'))
+        //        ->class('inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150')
+        //        ->route('card.edit', ['card' => 'id']),
 
            Button::add('destroy')
                ->caption(__('Delete'))
@@ -115,7 +124,6 @@ class CardTable extends PowerGridComponent
     |
     */
 
-    /*
     public function update(array $data ): bool
     {
        try {
@@ -143,7 +151,6 @@ class CardTable extends PowerGridComponent
 
         return ($updateMessages[$status][$field] ?? $updateMessages[$status]['_default_message']);
     }
-    */
 
 
 }
