@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Card;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Rogersxd\VCard\VCard;
 
@@ -37,11 +38,6 @@ class PublicProfileController extends Controller
             'user_id' => Auth::user()->id,
         ])->firstOrFail();
         $user = $card->user;
-        if(!$user)
-        {
-            session()->put('signup_card', $cid);
-            return redirect()->route('register');
-        }
         return view('public.profile.index', [
             'user' => $user,
             'card' => $card,

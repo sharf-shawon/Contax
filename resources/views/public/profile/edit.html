@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>Material Design for Bootstrap</title>
+  <!-- MDB icon -->
+  <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+  <!-- MDB -->
+  <link rel="stylesheet" href="css/mdb.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <style>
+    html {
+      position: relative;
+      min-height: 100%;
+    }
+
+    body {
+      margin-bottom: 20px;
+      /* Margin bottom by footer height */
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 20px;
+      /* Set the fixed height of the footer here */
+      line-height: 20px;
+      /* Vertically center the text there */
+    }
+
+    .content {
+      display: none;
+    }
+
+    .loader {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -50px;
+      margin-left: -50px;
+      3
+    }
+
+    .custom-loader {
+      width: 100px;
+      height: 100px;
+      display: grid;
+      border: 8px solid #0000;
+      border-radius: 50%;
+      border-color: #6C757D #0000;
+      animation: s6 2s infinite linear;
+    }
+
+    .custom-loader::before,
+    .custom-loader::after {
+      content: "";
+      grid-area: 1/1;
+      margin: 4px;
+      border: inherit;
+      border-radius: 50%;
+    }
+
+    .custom-loader::before {
+      border-color: #0D6EFD #0000;
+      animation: inherit;
+      animation-duration: 1s;
+      animation-direction: reverse;
+    }
+
+    .custom-loader::after {
+      margin: 16px;
+    }
+
+    @keyframes s6 {
+      100% {
+        transform: rotate(1turn)
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Start your project here-->
+  <div class="loader">
+    <div class="d-flex justify-content-center my-auto">
+      <div class="custom-loader"></div>
+    </div>
+  </div>
+  <!-- Just an image -->
+  <div class="content">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <!-- Container wrapper -->
+      <div class="container">
+        <!-- Toggle button -->
+        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+          data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <!-- Navbar brand -->
+          <a class="navbar-brand mt-2 mt-lg-0" href="#">
+            <img src="img/LinkardLogo.png" height="15" alt="MDB Logo" loading="lazy" />
+          </a>
+          <!-- Left links -->
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Team</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Projects</a>
+            </li>
+          </ul>
+          <!-- Left links -->
+        </div>
+        <!-- Collapsible wrapper -->
+
+        <!-- Right elements -->
+          <div class="d-flex align-items-center">
+            <ul class="navbar-nav">
+              <!-- Icon dropdown -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                  data-mdb-toggle="dropdown" aria-expanded="false">
+                  <i class="flag-uzbekistan flag m-0"></i>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li>
+                    <a class="dropdown-item" href="#"><i class="flag-uzbekistan flag"></i>
+                      Uzbek
+                      <i class="fa fa-check text-success ms-2"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"><i class="flag-russia flag"></i>Русский</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"><i class="flag-america flag"></i>English</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <!-- Avatar -->
+            <div class="dropdown">
+              <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar"
+                role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" height="25"
+                  alt="Black and White Portrait of a Man" loading="lazy" />
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                <li>
+                  <a class="dropdown-item" href="#">My profile</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Settings</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Logout</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- Right elements -->
+        <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+    <section class="bg-light pb-5">
+      <form action="#" class="needs-validation" novalidate>
+        <div class="container py-3">
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="card mb-3">
+                <div class="card-body text-center">
+                  <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                    class="rounded-circle img-fluid" style="width: 150px;">
+                  <h5 class="my-3">John Smith</h5>
+                  <div class="form-outline">
+                    <textarea class="form-control is-valid" id="validationTextarea"
+                      placeholder="Required example textarea" required></textarea>
+                    <label for="validationTextarea" class="form-label">Textarea</label>
+                    <div class="invalid-feedback">Please enter a message in the textarea.</div>
+                  </div>
+                  <div class="d-flex justify-content-center mb-2">
+                    <button type="button" class="btn btn-primary disabled">Save Contact</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-8">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-3 d-none d-md-inline">
+                      <p class="mb-0">Name</p>
+                    </div>
+                    <div class="col-sm-9 col-12">
+                      <div class="form-outline">
+                        <input type="text" class="form-control" id="name" value="Sharfuddin Shawon" required />
+                        <label for="name" class="form-label">Name</label>
+                        <div class="invalid-feedback">Enter a name!</div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-md-3 d-none d-md-inline">
+                      <p class="mb-0">Email</p>
+                    </div>
+                    <div class="col-sm-9 col-12">
+                      <div class="form-outline">
+                        <input type="email" class="form-control" id="email" value="shawon@gmail.com" required />
+                        <label for="email" class="form-label">Email</label>
+                        <div class="invalid-feedback">Enter a valid email address!</div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-md-3 d-none d-md-inline">
+                      <p class="mb-0">Mobile</p>
+                    </div>
+                    <div class="col-sm-9 col-12">
+                      <div class="form-outline">
+                        <input type="number" class="form-control" id="mobile" value="3252742966" required />
+                        <label for="mobile" class="form-label">Mobile</label>
+                        <div class="invalid-feedback">Enter a valid mobile number!</div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-md-3 d-none d-md-inline">
+                      <p class="mb-0">Address</p>
+                    </div>
+                    <div class="col-sm-9 col-12">
+                      <div class="form-outline">
+                        <input type="text" class="form-control" id="address" value="Springfield, Missouri" required />
+                        <label for="address" class="form-label">Address</label>
+                        <div class="invalid-feedback">Enter a valid address!</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mb-3 mb-lg-3">
+                <div class="card-body p-0">
+                  <ul class="list-group rounded-3">
+                    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                      <i class="fas fa-globe fa-lg text-warning p-3"></i>
+                      <div class="form-outline">
+                        <input type="url" class="form-control" id="website" placeholder="https://..." />
+                        <label for="website" class="form-label">Website</label>
+                        <div class="invalid-feedback">Enter a valid URL!</div>
+                      </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                      <i class="fab fa-github fa-lg p-3" style="color: #333333;"></i>
+                      <div class="form-outline">
+                        <input type="url" class="form-control" id="github" placeholder="https://..." />
+                        <label for="github" class="form-label">Github</label>
+                        <div class="invalid-feedback">Enter a valid URL!</div>
+                      </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                      <i class="fab fa-twitter fa-lg p-3" style="color: #55acee;"></i>
+                      <div class="form-outline">
+                        <input type="url" class="form-control" id="twitter" placeholder="https://..." />
+                        <label for="twitter" class="form-label">Twitter</label>
+                        <div class="invalid-feedback">Enter a valid URL!</div>
+                      </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                      <i class="fab fa-instagram fa-lg p-3" style="color: #ac2bac;"></i>
+                      <div class="form-outline">
+                        <input type="url" class="form-control" id="instagram" placeholder="https://..." />
+                        <label for="instagram" class="form-label">Instagram</label>
+                        <div class="invalid-feedback">Enter a valid URL!</div>
+                      </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                      <i class="fab fa-facebook-f fa-lg p-3" style="color: #3b5998;"></i>
+                      <div class="form-outline">
+                        <input type="url" class="form-control" id="facebook" placeholder="https://..." />
+                        <label for="facebook" class="form-label">Facebook</label>
+                        <div class="invalid-feedback">Enter a valid URL!</div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <a class="btn btn-primary btn-block btn-lg" href="/">Update Info</a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </section>
+    <!-- Footer -->
+    <footer class="text-center text-lg-start bg-light text-muted fixed-bottom">
+      <!-- Copyright -->
+      <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+        <a href="https://linkard.io" target="_blank" rel="noopener noreferrer">Get Yourself a Linkard</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+  </div>
+
+  <!-- End your project here-->
+
+  <!-- MDB -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+  <!-- Custom scripts -->
+  <script type="text/javascript">
+    (() => {
+      'use strict';
+
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      const forms = document.querySelectorAll('.needs-validation');
+
+      // Loop over them and prevent submission
+      Array.prototype.slice.call(forms).forEach((form) => {
+        form.addEventListener('submit', (event) => {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    })();
+  </script>
+  <script type="text/javascript">
+    $(window).on('load', function () {
+      $('.loader').fadeOut(3000);
+      $('.content').fadeIn(3000);
+    });
+  </script>
+</body>
+
+</html>

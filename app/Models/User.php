@@ -63,4 +63,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(\App\Models\Order::class, 'user_id', 'id');
     }
+
+    /**
+     * Get the full address for the User
+     *
+     *
+     */
+    public function getFullAddressAttribute()
+    {
+        return $this->address . ', ' . $this->city . ', ' . $this->country . ', ' . $this->postal_code;
+    }
 }
