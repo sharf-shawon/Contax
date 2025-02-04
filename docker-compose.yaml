@@ -1,0 +1,30 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: contaxt
+    # volumes:
+      # - ./:/var/www   # Mount the application code into the container
+    ports:
+      - "9000:9000"   # Expose PHP built-in server on port 9000
+    command: ["php", "-S", "0.0.0.0:9000", "-t", "public"]   # Start PHP built-in server
+    depends_on:
+      - db 
+  db:
+    image: mysql:5.7
+    container_name: db
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_ROOT_PASSWORD: laravel
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: laravel
+    volumes:
+      - dbdata:/var/lib/mysql
+
+volumes:
+  dbdata:
