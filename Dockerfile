@@ -34,11 +34,8 @@ COPY . .
 # Run Composer install now that the entire application (including artisan) is available.
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
-# Install npm dependencies
-RUN npm install
-
-# Optionally, run `npm run dev` or `npm run production` to build assets (uncomment if needed)
-RUN npm run build
+# Install npm dependencies && build assets
+RUN npm install && npm run build
 
 # Ensure Laravel’s storage and cache directories are writable by the web server
 RUN chown -R www-data:www-data /var/www

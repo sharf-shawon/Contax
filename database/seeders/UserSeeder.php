@@ -14,25 +14,11 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'name' => 'Super Admin',
-            'email' => 'sharfuddin.shawon@gmail.com',
-            'phone' => '3252742966',
+            'name' => 'Demo Account',
+            'email' => 'demo@shawon.me',
+            'phone' => '01700000000',
             'password' => bcrypt('12345678'),
-        ]);
-
-        User::create([
-            'name' => 'Sharfuddin Shawon',
-            'email' => 'shawon.techbros@gmail.com',
-            'phone' => '01612404200',
-            'password' => bcrypt('12345678'),
-        ]);
-
-        User::create([
-            'name' => 'Bunyod Abdusaidov',
-            'email' => 'bunyodabdusaidov0@gmail.com',
-            'phone' => '4173198737',
-            'password' => bcrypt('88888888'),
-        ]);
+        ]);;
         //
     }
 }
