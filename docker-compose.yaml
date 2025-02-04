@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: contaxt
+    container_name: contax
     # volumes:
       # - ./:/var/www   # Mount the application code into the container
     ports:

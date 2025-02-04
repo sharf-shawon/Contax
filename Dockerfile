@@ -38,7 +38,7 @@ RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 RUN npm install && npm run build
 
 # Ensure Laravel’s storage and cache directories are writable by the web server
-RUN chown -R www-data:www-data /var/www
+RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap /var/www/public
 
 # Expose port 9000 (the default port for PHP's built-in server)
 EXPOSE 9000
