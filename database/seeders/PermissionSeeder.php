@@ -53,8 +53,8 @@ class PermissionSeeder extends Seeder
         User::find(1)->assignRole('Super Admin');
 
         //Create Admin Role and Assign all permissions to it
-        // Role::create(['name' => 'Admin']);
-        // Role::find(2)->syncPermissions(Permission::all()->pluck('name'));
-        // User::find(2)->assignRole('Admin');
+        Role::create(['name' => 'Admin']);
+        Role::find(2)->syncPermissions(Permission::all()->pluck('name'));
+        User::find(2)->assignRole('Admin');
     }
 }
